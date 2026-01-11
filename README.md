@@ -47,21 +47,82 @@ SAFE-VOICE provides a unified pipeline that:
 
 ## 🧠 System Architecture
 
+## 🧠 System Architecture
+
+```mermaid
+flowchart TD
+    A[Audio Input (.wav / Microphone)] --> B[Audio Preprocessing]
+    B --> C[Audio Segmentation]
+
+    C --> D[Segment-level Language Identification]
+    D -->|English| E1[English ASR]
+    D -->|Tamil| E2[Tamil ASR]
+    D -->|Telugu| E3[Telugu ASR]
+    D -->|Kannada| E4[Kannada ASR]
+    D -->|Malayalam| E5[Malayalam ASR]
+
+    E1 --> F[Merged Transcription]
+    E2 --> F
+    E3 --> F
+    E4 --> F
+    E5 --> F
+
+    F --> G[Severity-based Hate Speech Detection]
+    G --> H[Decision Engine]
+
+    H -->|SAFE| I[Language-aware TTS]
+    H -->|MILD_ABUSE| J[Warning Response TTS]
+    H -->|SEVERE_HATE| K[Blocked Safety Message]
+
+    I --> L[Audio Output]
+    J --> L
+    K --> L
+
+🔹 **GitHub will render this automatically**  
+🔹 No plugins, no screenshots needed  
+
+---
+
+## 🧠 HOW YOU EXPLAIN THIS DIAGRAM IN INTERVIEW (MEMORIZE)
+
+> “The system first preprocesses and segments audio, performs segment-level language identification, routes each segment to language-specific ASR models, merges the transcription, applies severity-based hate speech detection, and finally generates a safe, language-aware TTS response.”
+
+That explanation alone sounds **industry-grade**.
+
+---
+
+## ✅ OPTION 2: SIMPLE ASCII DIAGRAM (Fallback)
+
+Use this **only if Mermaid is not rendering** (rare).
+
+```markdown
+## 🧠 System Architecture
+
 Audio Input
-↓
-Audio Segmentation (for code-switching)
-↓
-Segment-level Language Identification
-↓
+   |
+   v
+Audio Preprocessing
+   |
+   v
+Audio Segmentation
+   |
+   v
+Language Identification
+   |
+   v
 Language-specific ASR
-↓
+   |
+   v
 Merged Transcription
-↓
-Severity-based Hate Speech Detection
-↓
+   |
+   v
+Hate Speech Detection (Severity-based)
+   |
+   v
 Decision Engine
-↓
-Safe Language-Aware TTS Output
+   |
+   v
+Safe Text-to-Speech Output
 
 
 ---
