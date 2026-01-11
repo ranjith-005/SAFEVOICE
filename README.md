@@ -2,9 +2,6 @@
 ### Multilingual Code-Switched Speech Moderation & Safe Text-to-Speech System for Indian Languages
 
 
-::contentReference[oaicite:0]{index=0}
-
-
 ---
 
 ## 📌 Overview
